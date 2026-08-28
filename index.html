@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Евгений — массаж, остеопатия и мануальная терапия в Иркутске</title>
+<meta name="description" content="Массаж, остеопатия, мануальная терапия в Иркутске. Ново-Ленино, 5-й Советский переулок, 1а, салон «Багира». Классический, лечебный, миофасциальный массаж, выезд на дом.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,600&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%232b4d12'/><text x='32' y='46' font-size='34' font-family='Georgia,serif' text-anchor='middle' fill='%23e3a02f'>Е</text></svg>">
+<style>
+:root{
+  /* бамбук и свеча — цвета его визитки: сочная зелень плюс тёплый янтарь */
+  --bg:#f8faf2; --bg2:#ffffff; --ink:#23301a; --muted:#72806a;
+  --deep:#4f8420; --deep-d:#2b4d12; --deep-soft:#e9f4d8;
+  --gold:#e3a02f; --gold-d:#bf821e;
+  --line:#e5ead9; --ok:#5aa62b;
+  --radius:18px; --wrap:1280px;
+  --shadow:0 18px 50px rgba(40,64,20,.14);
+  --shadow-s:0 8px 24px rgba(40,64,20,.09);
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);
+     font-size:clamp(16px,.42vw + 15px,18.5px);line-height:1.62;-webkit-font-smoothing:antialiased}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 clamp(20px,3vw,44px)}
+a{color:inherit}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.12;letter-spacing:-.01em}
+h1 em,h2 em{font-style:italic;color:var(--gold)}
+section{padding:clamp(56px,6.2vw,112px) 0}
+.demo{background:#2b4d12;color:#e7eae7;text-align:center;font-size:13px;padding:9px 16px;line-height:1.45;font-weight:300}
+.demo b{color:#fff;font-weight:600}
+
+header{position:sticky;top:0;z-index:80;background:rgba(248,250,242,.92);
+       backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;gap:18px;height:68px}
+.logo{font-family:var(--serif);font-size:24px;font-weight:700}
+.logo em{font-style:italic;color:var(--gold)}
+.menu{display:flex;gap:24px;margin-left:auto;font-size:15px;font-weight:500}
+.menu a{text-decoration:none;color:var(--muted);transition:.15s}
+.menu a:hover{color:var(--deep)}
+.burger{display:none;margin-left:auto;background:none;border:0;font-size:24px;cursor:pointer;color:var(--deep)}
+@media(max-width:1040px){
+  .menu{position:fixed;inset:68px 0 auto 0;background:var(--bg2);flex-direction:column;
+        gap:0;padding:8px 0;box-shadow:var(--shadow);display:none}
+  .menu.open{display:flex}
+  .menu a{padding:14px 24px;border-bottom:1px solid var(--line);font-size:16px}
+  .burger{display:block}
+  header .hbtn{display:none}
+}
+.btn{display:inline-block;background:var(--deep);color:#fff;text-decoration:none;
+     padding:15px 30px;border-radius:999px;font-weight:600;font-size:15px;font-family:var(--sans);
+     border:0;cursor:pointer;transition:.18s;white-space:nowrap;box-shadow:var(--shadow-s)}
+.btn:hover{background:var(--deep-d);transform:translateY(-2px)}
+.btn-gold{background:var(--gold)}
+.btn-gold:hover{background:var(--gold-d)}
+.btn-line{background:transparent;color:var(--deep);border:1.5px solid var(--deep);box-shadow:none}
+.btn-line:hover{background:var(--deep);color:#fff}
+header .hbtn{padding:10px 20px;font-size:14px}
+
+.hero{background:linear-gradient(135deg,#2b4d12 0%,#548b20 48%,#8dc63f 100%);
+      color:#fff;padding:clamp(48px,5.4vw,104px) 0 clamp(58px,6.4vw,120px);position:relative;overflow:hidden}
+.hero:before{content:'';position:absolute;width:640px;height:640px;border-radius:50%;
+             right:-220px;top:-260px;background:rgba(255,214,120,.26)}
+.hero:after{content:'';position:absolute;width:380px;height:380px;border-radius:50%;
+            left:-160px;bottom:-200px;background:rgba(255,255,255,.05)}
+.hero .wrap{position:relative;z-index:2}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(34px,4vw,72px);align-items:center}
+@media(max-width:940px){.hero-grid{grid-template-columns:1fr;gap:36px}.hero{padding:52px 0 62px}}
+.kicker{display:inline-block;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.22);
+        padding:7px 16px;border-radius:999px;font-size:13px;font-weight:500;margin-bottom:22px}
+.hero h1{font-size:clamp(33px,4.3vw,70px);margin-bottom:clamp(14px,1.4vw,24px)}
+.hero h1 em{color:#ffd97a}
+.hero .lead{font-size:clamp(16px,.9vw + 12px,21px);opacity:.92;max-width:32em;
+      margin-bottom:clamp(24px,2.4vw,38px);font-weight:300}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:36px}
+.hero .btn{background:#fff;color:var(--deep-d)}
+.hero .btn:hover{background:#eef7e2}
+.hero .btn-gold{background:var(--gold);color:#fff}
+.hero .btn-gold:hover{background:var(--gold-d)}
+.hero .btn-line{background:transparent;border-color:rgba(255,255,255,.5);color:#fff}
+.hero .btn-line:hover{background:#fff;color:var(--deep-d)}
+.facts{display:grid;grid-template-columns:repeat(4,auto);justify-content:start;
+       gap:clamp(22px,2.6vw,52px);padding-top:clamp(22px,2vw,32px);
+       border-top:1px solid rgba(255,255,255,.18)}
+.fact b{display:block;font-family:var(--serif);font-size:clamp(26px,2.1vw,40px);line-height:1}
+.fact span{font-size:13px;opacity:.75;font-weight:300}
+@media(max-width:560px){.facts{grid-template-columns:repeat(2,auto);gap:20px 34px}}
+.hero-photo{position:relative}
+.hero-photo .frame{aspect-ratio:4/5;border-radius:22px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.3);
+  background:linear-gradient(150deg,#6ba82c,#2b4d12);display:grid;place-items:center;text-align:center}
+.hero-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.frame .slot{padding:30px;font-size:13px;opacity:.55;font-weight:300;line-height:1.7}
+.frame .slot b{display:block;font-family:var(--serif);font-size:22px;opacity:.9;margin-bottom:8px;font-weight:600}
+.badge{position:absolute;top:18px;left:-14px;background:#fff;color:var(--deep-d);
+  padding:10px 18px;border-radius:999px;font-size:13.5px;font-weight:600;box-shadow:var(--shadow);
+  display:flex;align-items:center;gap:8px}
+.badge i{width:8px;height:8px;border-radius:50%;background:var(--ok);display:block}
+.hero-caption{position:absolute;left:16px;right:16px;bottom:-34px;background:#fff;color:var(--ink);
+  border-radius:16px;padding:18px 20px;box-shadow:var(--shadow)}
+.hero-caption h3{font-size:20px;margin-bottom:2px}
+.hero-caption .role{font-size:13px;color:var(--muted);margin-bottom:12px}
+.hero-caption .stats{display:flex;gap:18px}
+.hero-caption .stat b{display:block;font-family:var(--serif);font-size:19px;color:var(--deep)}
+.hero-caption .stat span{font-size:11.5px;color:var(--muted)}
+@media(max-width:940px){.hero-caption{position:static;margin-top:16px}.badge{left:14px}}
+
+.strip{background:var(--deep-d);color:#eaf4da;overflow:hidden;padding:15px 0;white-space:nowrap}
+.strip-track{display:inline-flex;animation:scroll 34s linear infinite}
+.strip-item{padding:0 26px;font-size:14px;font-weight:300;letter-spacing:.04em;text-transform:uppercase}
+.strip-item:after{content:'✦';margin-left:26px;color:var(--gold);font-size:11px}
+@keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+.sec-head{margin-bottom:clamp(28px,3vw,52px);max-width:46em}
+.sec-head .tag{color:var(--gold);font-size:12.5px;font-weight:700;letter-spacing:.13em;
+               text-transform:uppercase;display:block;margin-bottom:12px}
+.sec-head h2{font-size:clamp(27px,3.1vw,50px);margin-bottom:12px}
+.sec-head p{color:var(--muted);font-weight:300}
+.rev{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.rev.in{opacity:1;transform:none}
+
+.about{background:var(--bg2)}
+.about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(30px,3.4vw,58px);align-items:start}
+@media(max-width:940px){.about-grid{grid-template-columns:1fr}}
+.q-big{font-family:var(--serif);font-size:clamp(21px,1.9vw,33px);line-height:1.28;color:var(--deep);
+       border-left:3px solid var(--gold);padding:2px 0 2px 22px;margin-bottom:22px}
+.q-from{font-size:14px;color:var(--muted);font-weight:300;margin-bottom:26px}
+.edu-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.edu-facts div{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:16px}
+.edu-facts b{display:block;font-family:var(--serif);font-size:21px;color:var(--deep)}
+.edu-facts span{font-size:13px;color:var(--muted);font-weight:300}
+@media(max-width:640px){.edu-facts{grid-template-columns:1fr}.q-big{font-size:22px}}
+.card{background:var(--bg2);border:1px solid var(--line);border-radius:var(--radius);
+      padding:32px;box-shadow:var(--shadow)}
+.about .card{background:linear-gradient(160deg,#fff,#f2f8e6)}
+.card h3{font-size:26px;margin-bottom:6px}
+.card .sub{font-size:15px;color:var(--muted);margin-bottom:20px;font-weight:300}
+.acts{display:grid;gap:10px;margin-top:4px}
+.acts .btn{width:100%;text-align:center;padding:16px 22px}
+.note{font-size:12.5px;color:var(--muted);margin-top:12px;text-align:center;font-weight:300}
+
+.steps{display:grid;gap:2px;margin:6px 0 0}
+.steps li{list-style:none;display:flex;gap:16px;align-items:flex-start;padding:16px 0;
+          border-bottom:1px solid var(--line)}
+.steps li:last-child{border-bottom:0}
+.steps .n{flex:none;width:38px;height:38px;border-radius:50%;background:var(--deep-soft);
+          color:var(--deep);font-family:var(--serif);font-size:19px;font-weight:700;
+          display:grid;place-items:center}
+.steps b{display:block;margin-bottom:2px}
+.steps p{font-size:15px;color:var(--muted);font-weight:300}
+
+.tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px}
+.tab{padding:12px 24px;border-radius:999px;border:1.5px solid var(--line);background:#fff;
+     cursor:pointer;font-family:var(--sans);font-size:15px;font-weight:600;color:var(--muted);transition:.15s}
+.tab:hover{border-color:var(--deep)}
+.tab.on{background:var(--deep);border-color:var(--deep);color:#fff;box-shadow:var(--shadow-s)}
+.plist{display:none;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);
+       border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-s)}
+.plist.on{display:grid}
+@media(max-width:760px){.plist.on{grid-template-columns:1fr}}
+.row{display:flex;justify-content:space-between;gap:16px;padding:15px 22px;background:#fff;
+     align-items:baseline;transition:.15s}
+.row:hover{background:var(--deep-soft)}
+.row .nm{font-size:15.5px}
+.row .nm small{display:block;color:var(--muted);font-weight:300;font-size:13px;line-height:1.45}
+.row .pr{font-family:var(--serif);font-size:21px;font-weight:700;white-space:nowrap;color:var(--deep)}
+.upd{font-size:12.5px;color:var(--muted);margin-top:16px;font-weight:300}
+
+.why{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:clamp(16px,1.6vw,26px)}
+.why article{background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+             padding:28px;box-shadow:var(--shadow-s);transition:.2s}
+.why article:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.why .ic{width:44px;height:44px;border-radius:12px;background:var(--deep-soft);color:var(--deep);
+         display:grid;place-items:center;font-size:20px;margin-bottom:14px}
+.why h3{font-size:21px;margin-bottom:7px}
+.why p{font-size:14.5px;color:var(--muted);font-weight:300}
+
+.gal{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(12px,1.3vw,22px)}
+@media(max-width:940px){.gal{grid-template-columns:repeat(2,1fr)}}
+.gal figure{aspect-ratio:1;border-radius:16px;overflow:hidden;background:linear-gradient(150deg,#eef5e2,#dfe8d2);
+  display:grid;place-items:center;text-align:center;font-size:12px;color:#9aa39f;
+  border:1px solid var(--line);padding:10px;font-weight:300}
+.gal img{width:100%;height:100%;object-fit:cover;display:block;transition:.4s}
+.gal figure:hover img{transform:scale(1.04)}
+
+.revs{background:var(--bg2)}
+.rev-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:clamp(16px,1.6vw,26px)}
+.quote{background:var(--bg);border:1px solid var(--line);border-radius:var(--radius);
+       padding:28px;position:relative;box-shadow:var(--shadow-s)}
+.quote:before{content:'”';position:absolute;right:22px;top:2px;font-family:var(--serif);
+              font-size:74px;color:var(--deep-soft);line-height:1}
+.who{display:flex;align-items:center;gap:12px;margin-bottom:14px;position:relative}
+.av{width:42px;height:42px;border-radius:50%;background:var(--deep);color:#fff;
+    display:grid;place-items:center;font-family:var(--serif);font-weight:700;font-size:16px;flex:none}
+.who .nm{font-weight:600;font-size:15.5px}
+.st{color:var(--gold);font-size:13px;letter-spacing:2px}
+.quote p{font-size:15px;color:#4a5443;font-weight:300;position:relative}
+
+.faq{max-width:860px}
+.warn{margin-top:14px;border:1px solid rgba(0,0,0,.1);border-radius:12px;
+      padding:0 18px;background:rgba(0,0,0,.015)}
+.warn summary{cursor:pointer;padding:15px 0;font-size:15.5px;font-weight:600;list-style:none}
+.warn summary::-webkit-details-marker{display:none}
+.warn summary::before{content:"+ ";color:var(--gold);font-weight:700}
+.warn[open] summary::before{content:"\2212 "}
+.warn p{font-size:14.5px;line-height:1.75;color:var(--muted);font-weight:300;margin:0 0 14px}
+.warn[open] summary{border-bottom:1px solid rgba(0,0,0,.08);margin-bottom:14px}
+
+
+.docs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:clamp(14px,1.6vw,24px)}
+.doc{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;
+     box-shadow:var(--shadow-s);transition:.2s}
+.doc:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.doc a{display:block;background:#f3f7ec}
+.doc img{width:100%;aspect-ratio:3/4;object-fit:cover;object-position:top center;display:block}
+.doc figcaption{padding:16px 18px;font-size:13px;color:var(--muted);font-weight:300;line-height:1.5}
+.doc figcaption b{display:block;font-weight:600;color:var(--ink);font-size:15.5px;margin-bottom:3px}
+.hours{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:clamp(18px,2vw,28px)}
+.hours div{background:var(--deep-soft);border-radius:14px;padding:18px;text-align:center}
+.hours b{display:block;font-family:var(--serif);font-size:30px;color:var(--deep);line-height:1}
+.hours span{font-size:13px;color:var(--muted);font-weight:300}
+@media(max-width:760px){.hours{grid-template-columns:1fr 1fr}}
+
+footer{background:var(--deep-d);color:#eaf4da;padding:76px 0 30px}
+footer a{color:#fff}
+.cts{display:grid;grid-template-columns:repeat(3,1fr);gap:34px;margin-bottom:40px}
+@media(max-width:940px){.cts{grid-template-columns:1fr}}
+.cts h4{font-size:12.5px;text-transform:uppercase;letter-spacing:.13em;color:var(--gold);margin-bottom:14px}
+.cts p{font-size:15.5px;margin-bottom:6px;font-weight:300}
+.cts a{font-size:15.5px;display:block;margin-bottom:6px;text-decoration:none;font-weight:300}
+.cts a:hover{text-decoration:underline}
+.copy{border-top:1px solid rgba(255,255,255,.14);padding-top:22px;font-size:13px;opacity:.6;
+      display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-weight:300}
+.legal{border-top:1px solid rgba(255,255,255,.14);margin-top:26px;padding-top:20px;
+       font-size:13px;line-height:1.7;font-weight:300;opacity:.55;max-width:860px}
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:90;background:#fff;border-top:1px solid var(--line);
+        padding:10px 14px;display:none;gap:10px;box-shadow:0 -8px 28px rgba(0,0,0,.09)}
+.sticky .btn{flex:1;text-align:center;padding:14px 10px;box-shadow:none}
+.sticky .btn-line{background:transparent;color:var(--deep)}
+@media(max-width:760px){.sticky{display:flex}body{padding-bottom:76px}}
+</style>
+</head>
+<body>
+
+<!-- ПРИ СДАЧЕ: удалить эту строку -->
+<div class="demo">Черновик сайта &middot; цены взяты из прайса ВКонтакте. <b>Проверить контакты и отзывы перед публикацией.</b></div>
+
+<header>
+  <div class="wrap">
+    <div class="logo">Евгений <em>массаж</em></div>
+    <nav class="menu" id="menu">
+      <a href="#about" onclick="closeMenu()">О себе</a>
+      <a href="#docs" onclick="closeMenu()">Документы</a>
+      <a href="#price" onclick="closeMenu()">Цены</a>
+      <a href="#how" onclick="closeMenu()">Как проходит</a>
+      <a href="#why" onclick="closeMenu()">Почему сюда</a>
+      <a href="#cab" onclick="closeMenu()">Кабинет</a>
+      <a href="#revs" onclick="closeMenu()">Отзывы</a>
+      <a href="#faq" onclick="closeMenu()">Вопросы</a>
+      <a href="#contacts" onclick="closeMenu()">Контакты</a>
+    </nav>
+    <button class="burger" onclick="toggleMenu()" aria-label="Меню">☰</button>
+    <a class="btn hbtn" href="https://vk.me/id1028741513" target="_blank" rel="noopener">Записаться</a>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="kicker">Иркутск &middot; Ново-Ленино &middot; 5-й Советский переулок, 1а</span>
+      <h1>Массаж, <em>остеопатия</em> и мануальная терапия</h1>
+      <p class="lead">Снимаю боль в спине и шее, разбираю зажимы после сидячей работы,
+         возвращаю подвижность. Принимаю в своём кабинете в салоне «Багира» — и выезжаю на дом.</p>
+      <div class="hero-cta">
+        <a class="btn btn-gold" href="#price">Посмотреть цены</a>
+        <a class="btn btn-line" href="https://vk.me/id1028741513" target="_blank" rel="noopener">Записаться</a>
+      </div>
+      <div class="facts">
+        <div class="fact"><b>5,0</b><span>рейтинг в 2ГИС</span></div>
+        <div class="fact"><b>14</b><span>оценок клиентов</span></div>
+        <div class="fact"><b>25</b><span>видов массажа</span></div>
+        <div class="fact"><b>Выезд</b><span>работаю на дому у клиента</span></div>
+      </div>
+    </div>
+
+    <div class="hero-photo">
+      <div class="badge"><i></i>Запись открыта</div>
+      <div class="frame">
+        <!-- Положи файл photo/hero.jpg — подхватится сам.
+             Нет файла — останется аккуратная заглушка, ничего не сломается. -->
+        <img src="photo/hero.jpg" alt="Евгений, массажист"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
+        <div class="slot" style="display:none"><b>Евгений</b>массаж · остеопатия · мануальная терапия</div>
+      </div>
+      <div class="hero-caption">
+        <h3>Евгений</h3>
+        <div class="role">Массажист &middot; остеопат &middot; мануальный терапевт</div>
+        <div class="stats">
+          <div class="stat"><b>5,0★</b><span>2ГИС</span></div>
+          <div class="stat"><b>25+</b><span>видов массажа</span></div>
+          <div class="stat"><b>от 800 ₽</b><span>приём по зонам</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="strip">
+  <div class="strip-track">
+    <div class="strip-item">Лечебный массаж спины</div><div class="strip-item">Шейно-воротниковая зона</div>
+    <div class="strip-item">Миофасциальный</div><div class="strip-item">Остеопатия</div>
+    <div class="strip-item">Массаж в 4 руки</div><div class="strip-item">Медовый Relax</div>
+    <div class="strip-item">Выезд на дом</div>
+    <div class="strip-item">Лечебный массаж спины</div><div class="strip-item">Шейно-воротниковая зона</div>
+    <div class="strip-item">Миофасциальный</div><div class="strip-item">Остеопатия</div>
+    <div class="strip-item">Массаж в 4 руки</div><div class="strip-item">Медовый Relax</div>
+    <div class="strip-item">Выезд на дом</div>
+  </div>
+</div>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="sec-head rev">
+      <span class="tag">О себе</span>
+      <h2>Работаю руками <em>и головой</em></h2>
+      <p>Массажист, остеопат, мануальный терапевт. Иркутск, Ново-Ленино.</p>
+    </div>
+
+    <div class="about-grid">
+      <div class="rev">
+        <blockquote class="q-big">Сначала разбираемся, откуда боль. Потом уже руки.</blockquote>
+        <p class="q-from">Один и тот же массаж спины помогает одному и не помогает другому —
+          потому что причины разные. Поэтому первый приём начинается с разговора и осмотра.</p>
+
+        <div class="edu-facts">
+          <div><b>88 часов</b><span>обучение в академии «Эколь»</span></div>
+          <div><b>Свой кабинет</b><span>салон «Багира», 1 этаж</span></div>
+          <div><b>Выезд</b><span>приезжаю к вам домой</span></div>
+        </div>
+
+        <p style="color:var(--muted);font-size:15px;font-weight:300;margin-top:22px">
+          Если не знаете, какой массаж вам нужен — не выбирайте сами. Напишите, что беспокоит,
+          и я скажу, что подойдёт и сколько это будет стоить.</p>
+      </div>
+
+      <div class="card rev">
+        <h3>Записаться на приём</h3>
+        <p class="sub">Напишите, что беспокоит и когда вам удобно — отвечу и подберу время</p>
+        <div class="acts">
+          <a class="btn btn-gold" href="https://vk.me/id1028741513" target="_blank" rel="noopener">Написать во ВКонтакте</a>
+          <a class="btn btn-line" href="https://wa.me/79247076661" target="_blank" rel="noopener">Написать в WhatsApp</a>
+          <a class="btn btn-line" href="tel:+79247076661">Позвонить: +7 924 707-66-61</a>
+        </div>
+        <p class="note">Отвечаю в течение дня. Спрашивать про противопоказания — нормально,
+          лучше до записи, чем на кушетке.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="docs">
+  <div class="wrap">
+    <div class="sec-head rev">
+      <span class="tag">Документы</span>
+      <h2>Диплом и <em>сертификаты</em></h2>
+      <p>Академия красоты «Эколь», курс «Массажист» — 88 академических часов. Нажмите на документ, чтобы рассмотреть.</p>
+    </div>
+
+    <div class="docs-grid">
+      <figure class="doc rev"><a href="photo/diplom.jpg" target="_blank" rel="noopener">
+        <img src="photo/diplom.jpg" alt="Диплом «Массажист», Лобов Евгений Игоревич"></a>
+        <figcaption><b>Диплом «Массажист»</b>АА № 2684127 &middot; 15.12.2024</figcaption></figure>
+
+      <figure class="doc rev"><a href="photo/sert-classic.jpg" target="_blank" rel="noopener">
+        <img src="photo/sert-classic.jpg" alt="Сертификат «Классический массаж»"></a>
+        <figcaption><b>Классический массаж</b>АА № 2684129 &middot; 08.12.2024</figcaption></figure>
+
+      <figure class="doc rev"><a href="photo/sert-mio.jpg" target="_blank" rel="noopener">
+        <img src="photo/sert-mio.jpg" alt="Сертификат «Миофасциальный массаж»"></a>
+        <figcaption><b>Миофасциальный массаж</b>АА № 2684128 &middot; 13.12.2024</figcaption></figure>
+
+      <figure class="doc rev"><a href="photo/docs-all.jpg" target="_blank" rel="noopener">
+        <img src="photo/docs-all.jpg" alt="Диплом и сертификаты"></a>
+        <figcaption><b>Антицеллюлитный массаж</b>АА № 2684130 &middot; 13.12.2024</figcaption></figure>
+    </div>
+
+    <div class="hours rev">
+      <div><b>32</b><span>часа классический массаж</span></div>
+      <div><b>24</b><span>часа антицеллюлитный</span></div>
+      <div><b>16</b><span>часов миофасциальный</span></div>
+      <div><b>16</b><span>часов расслабляющий</span></div>
+    </div>
+    <p class="upd">Документы выданы на имя Лобова Евгения Игоревича. Оригиналы можно посмотреть в кабинете.</p>
+  </div>
+</section>
+
+<section id="price">
+  <div class="wrap">
+    <div class="sec-head rev">
+      <span class="tag">Цены</span>
+      <h2>Прайс <em>по направлениям</em></h2>
+      <p>Выберите вкладку — оздоровительные, лечебные, по отдельным зонам или выезд на дом.</p>
+    </div>
+
+    <div class="tabs rev">
+      <button class="tab on" data-t="ozd">Оздоровительные &middot; 11</button>
+      <button class="tab" data-t="lech">Лечебные &middot; 4</button>
+      <button class="tab" data-t="zon">По зонам &middot; 6</button>
+      <button class="tab" data-t="viezd">Выезд на дом</button>
+    </div>
+
+    <div class="plist on rev" id="ozd">
+      <div class="row"><span class="nm">Классический<small>Всё тело или отдельные зоны: спина, шея, руки, ноги</small></span><span class="pr">2 000 ₽</span></div>
+      <div class="row"><span class="nm">Расслабляющий<small>Мягкие техники, аромамасла, снятие стресса</small></span><span class="pr">2 500 ₽</span></div>
+      <div class="row"><span class="nm">Общий<small>Последовательная проработка всего тела</small></span><span class="pr">3 200 ₽</span></div>
+      <div class="row"><span class="nm">Антицеллюлитный<small>Лимфодренаж, уменьшение объёмов</small></span><span class="pr">3 200 ₽</span></div>
+      <div class="row"><span class="nm">Миофасциальный<small>Работа с фасциями, глубокие зажимы</small></span><span class="pr">3 700 ₽</span></div>
+      <div class="row"><span class="nm">Relax<small>Медленные плавные техники, полное расслабление</small></span><span class="pr">4 200 ₽</span></div>
+      <div class="row"><span class="nm">Relax медовый<small>Прогревание, пилинг и питание кожи мёдом</small></span><span class="pr">4 700 ₽</span></div>
+      <div class="row"><span class="nm">Массаж в 4 руки<small>Работают мастера мужчина и женщина</small></span><span class="pr">от 2 500 ₽</span></div>
+      <div class="row"><span class="nm">Массажный педикюр<small>Уход за стопами и снятие напряжения в ногах</small></span><span class="pr">2 200 ₽</span></div>
+      <div class="row"><span class="nm">Массажный педикюр медовый<small>Нужен осмотр и консультация: есть противопоказания</small></span><span class="pr">2 700 ₽</span></div>
+      <div class="row"><span class="nm">Массажный педикюр травяными мешочками</span><span class="pr">2 500 ₽</span></div>
+    </div>
+
+    <div class="plist rev" id="lech">
+      <div class="row"><span class="nm">Лечебно-восстановительный для спины и позвоночника<small>Остеохондроз, сидячая работа, восстановление после травм</small></span><span class="pr">2 700 ₽</span></div>
+      <div class="row"><span class="nm">Лечебный шейно-воротниковой зоны<small>Спазмы, головные боли, работа за компьютером</small></span><span class="pr">1 700 ₽</span></div>
+      <div class="row"><span class="nm">Лечебный массаж ног<small>Отёки, тяжесть, тонус мышц</small></span><span class="pr">1 700 ₽</span></div>
+      <div class="row"><span class="nm">Лечебный массаж рук<small>Туннельный синдром, усталость, подвижность суставов</small></span><span class="pr">1 500 ₽</span></div>
+    </div>
+
+    <div class="plist rev" id="zon">
+      <div class="row"><span class="nm">Медовый массаж рук и ног</span><span class="pr">1 500 ₽</span></div>
+      <div class="row"><span class="nm">Массаж лица<small>Отёки, тонус кожи, лимфодренаж</small></span><span class="pr">1 000 ₽</span></div>
+      <div class="row"><span class="nm">Массаж головы<small>Головные боли, сон, стимуляция роста волос</small></span><span class="pr">1 000 ₽</span></div>
+      <div class="row"><span class="nm">Массаж шейно-воротниковой зоны</span><span class="pr">1 000 ₽</span></div>
+      <div class="row"><span class="nm">Массаж ног</span><span class="pr">1 000 ₽</span></div>
+      <div class="row"><span class="nm">Массаж рук</span><span class="pr">800 ₽</span></div>
+    </div>
+
+    <div class="plist rev" id="viezd">
+      <div class="row"><span class="nm">Выезд на дом по Иркутску<small>Привожу свой стол и материалы. Цену уточняйте — зависит от района и объёма</small></span><span class="pr">по запросу</span></div>
+      <div class="row"><span class="nm">Как заказать<small>Напишите адрес, какой массаж нужен и удобное время — отвечу со стоимостью</small></span><span class="pr">—</span></div>
+    </div>
+
+    <p class="upd">Цены указаны за сеанс и не являются публичной офертой. Итоговая стоимость
+      зависит от зоны, длительности и объёма работы и обсуждается до начала процедуры.</p>
+  </div>
+</section>
+
+<section class="about" id="how">
+  <div class="wrap">
+    <div class="sec-head rev">
+      <span class="tag">Как проходит</span>
+      <h2>Первый приём <em>по шагам</em></h2>
+      <p>Чтобы вы понимали, за что платите и что будет происходить.</p>
+    </div>
+    <div class="about-grid">
+      <ul class="steps rev">
+        <li><span class="n">1</span><div><b>Разговор</b><p>Рассказываете, что и как давно беспокоит, чем занимаетесь, были ли травмы и операции.</p></div></li>
+        <li><span class="n">2</span><div><b>Осмотр</b><p>Смотрю осанку и подвижность, нахожу зажатые участки. Проверяю, нет ли противопоказаний.</p></div></li>
+        <li><span class="n">3</span><div><b>Работа</b><p>Подбираю технику под задачу. Всё время говорю, что делаю, и спрашиваю про ощущения.</p></div></li>
+        <li><span class="n">4</span><div><b>Отдых</b><p>После сеанса не нужно вскакивать — даю полежать и прийти в себя.</p></div></li>
+        <li><span class="n">5</span><div><b>Что дальше</b><p>Говорю честно: хватит одного сеанса или нужен курс. Показываю упражнения, чтобы держать результат.</p></div></li>
+      </ul>
+      <div class="card rev">
+        <h3>Сколько идёт сеанс</h3>
+        <p class="sub">Зависит от вида массажа</p>
+        <div class="edu-facts" style="grid-template-columns:1fr 1fr">
+          <div><b>30–40 мин</b><span>одна зона</span></div>
+          <div><b>60–90 мин</b><span>общий и Relax</span></div>
+        </div>
+        <p style="color:var(--muted);font-size:15px;font-weight:300;margin-top:20px">
+          Приходите за 5 минут до времени. Планируйте так, чтобы после не бежать —
+          организму нужно 15–20 минут, чтобы принять работу.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="wrap">
+    <div class="sec-head rev">
+      <span class="tag">Почему сюда</span>
+      <h2>Что вы получаете <em>кроме массажа</em></h2>
+    </div>
+    <div class="why">
+      <article class="rev"><div class="ic">✋</div><h3>Три специальности в одних руках</h3>
+        <p>Массажист, остеопат и мануальный терапевт — не нужно ходить к троим. Подберу то, что решает вашу задачу.</p></article>
+      <article class="rev"><div class="ic">🎯</div><h3>Работа по причине, а не по симптому</h3>
+        <p>Болит поясница — смотрю таз, стопы и осанку. Иначе боль вернётся через неделю.</p></article>
+      <article class="rev"><div class="ic">🏠</div><h3>Выезд на дом</h3>
+        <p>Если тяжело добраться или дома удобнее — приеду со своим оборудованием.</p></article>
+      <article class="rev"><div class="ic">🕐</div><h3>Без спешки</h3>
+        <p>Не ставлю клиентов подряд впритык. Сеанс идёт столько, сколько нужно.</p></article>
+      <article class="rev"><div class="ic">💬</div><h3>Понятно объясняю</h3>
+        <p>Говорю простыми словами, что нашёл и что с этим делать. Без запугивания и без «у вас всё смещено».</p></article>
+      <article class="rev"><div class="ic">📋</div><h3>Честно про курс</h3>
+        <p>Если хватит одного сеанса — так и скажу. Курс предлагаю только когда он реально нужен.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="cab">
+  <div class="wrap">
+    <div class="sec-head rev">
+      <span class="tag">Кабинет</span>
+      <h2>Где я <em>принимаю</em></h2>
+      <p>Салон красоты «Багира», 1 этаж. 5-й Советский переулок, 1а, Ново-Ленино.</p>
+    </div>
+    <div class="gal">
+      <figure><img src="photo/1.jpg" alt="Кабинет" onerror="this.remove()">фото кабинета<br>photo/1.jpg</figure>
+      <figure><img src="photo/2.jpg" alt="Кабинет" onerror="this.remove()">фото кабинета<br>photo/2.jpg</figure>
+      <figure><img src="photo/3.jpg" alt="Кабинет" onerror="this.remove()">фото кабинета<br>photo/3.jpg</figure>
+      <figure><img src="photo/4.jpg" alt="Кабинет" onerror="this.remove()">фото кабинета<br>photo/4.jpg</figure>
+    </div>
+  </div>
+</section>
+
+<section class="revs" id="revs">
+  <div class="wrap">
+    <div class="sec-head rev">
+      <span class="tag">Отзывы</span>
+      <h2>Что говорят <em>клиенты</em></h2>
+      <p>Оценки в 2ГИС и сообщения во ВКонтакте.</p>
+    </div>
+    <div class="rev-grid">
+      <div class="quote rev"><div class="who"><div class="av">О</div><div><div class="nm">Ольга</div><div class="st">★★★★★</div></div></div>
+        <p>ЗАМЕНИТЬ НА РЕАЛЬНЫЙ ОТЗЫВ. Сюда — текст из 2ГИС или скриншот переписки с разрешения клиента.</p></div>
+      <div class="quote rev"><div class="who"><div class="av">С</div><div><div class="nm">Сергей</div><div class="st">★★★★★</div></div></div>
+        <p>ЗАМЕНИТЬ НА РЕАЛЬНЫЙ ОТЗЫВ. Лучше всего заходят отзывы про конкретную боль: «не мог повернуть голову — после трёх сеансов прошло».</p></div>
+      <div class="quote rev"><div class="who"><div class="av">М</div><div><div class="nm">Марина</div><div class="st">★★★★★</div></div></div>
+        <p>ЗАМЕНИТЬ НА РЕАЛЬНЫЙ ОТЗЫВ. Один отзыв обязательно от женщины — снимает вопрос комфорта на приёме у мужчины-массажиста.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head rev">
+      <span class="tag">Вопросы</span>
+      <h2>Спрашивают <em>часто</em></h2>
+    </div>
+    <div class="faq">
+      <details class="warn"><summary>Я женщина. Насколько комфортно у мужчины-массажиста?</summary>
+        <p>Приём проходит в кабинете салона красоты, а не на квартире. Работаю строго в рамках
+          профессии: только оздоровительный и лечебный массаж. Тело закрыто простынёй, открыта
+          только та зона, с которой я работаю в данный момент. Перед каждым этапом говорю,
+          что буду делать. Если что-то некомфортно — скажите, остановлюсь.</p></details>
+      <details class="warn"><summary>Какой массаж мне выбрать?</summary>
+        <p>Не выбирайте вслепую. Напишите, что беспокоит и чем занимаетесь — предложу вариант
+          и назову цену. Если по вашей ситуации массаж не поможет, скажу прямо и порекомендую врача.</p></details>
+      <details class="warn"><summary>Будет больно?</summary>
+        <p>Лечебные и антицеллюлитные техники могут давать терпимый дискомфорт — это нормально.
+          Расслабляющие и Relax идут без боли. Терпеть через силу не нужно: интенсивность
+          подстраиваю по ходу сеанса.</p></details>
+      <details class="warn"><summary>Сколько нужно сеансов?</summary>
+        <p>Разово — чтобы снять усталость и напряжение. При хронических болях обычно нужен курс
+          из 5–10 сеансов. Точнее скажу после первого приёма.</p></details>
+      <details class="warn"><summary>Есть противопоказания?</summary>
+        <p>Да. Массаж не делают при высокой температуре и острых воспалениях, кожных заболеваниях
+          и повреждениях в зоне работы, кровотечениях и болезнях крови, тромбозе и варикозе в
+          тяжёлой форме, онкологии, обострении хронических заболеваний. С осторожностью —
+          при беременности, гипертонии, после недавних травм и операций. Обязательно скажите
+          о своих диагнозах до начала сеанса. Если сомневаетесь — сначала к врачу, я не заменяю
+          медицинское обследование.</p></details>
+      <details class="warn"><summary>Работаете с выездом?</summary>
+        <p>Да, по Иркутску. Привожу свой массажный стол и материалы. Стоимость зависит от района
+          и объёма — напишите адрес и что нужно, отвечу с ценой.</p></details>
+    </div>
+  </div>
+</section>
+
+<footer id="contacts">
+  <div class="wrap">
+    <div class="cts">
+      <div>
+        <h4>Адрес</h4>
+        <p>Иркутск, м-н Ново-Ленино<br>5-й Советский переулок, 1а<br>салон красоты «Багира», 1 этаж</p>
+      </div>
+      <div>
+        <h4>Связь</h4>
+        <a href="tel:+79247076661">+7 924 707-66-61</a>
+        <a href="https://wa.me/79247076661" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="https://vk.ru/id1028741513" target="_blank" rel="noopener">ВКонтакте</a>
+      </div>
+      <div>
+        <h4>Время работы</h4>
+        <p>Ежедневно, по записи<br>Выезд на дом по Иркутску</p>
+        <a class="btn btn-gold" style="margin-top:12px" href="https://vk.me/id1028741513" target="_blank" rel="noopener">Записаться</a>
+      </div>
+    </div>
+    <div class="copy">
+      <span>© 2026 Евгений — массаж, остеопатия, мануальная терапия. Иркутск</span>
+      <span>Сделано с заботой о спине</span>
+    </div>
+    <div class="legal">
+      Информация на сайте носит справочный характер и не является публичной офертой,
+      медицинской консультацией или диагнозом. Массаж имеет противопоказания —
+      перед процедурой необходима консультация специалиста. Услуги оказывает физическое лицо;
+      реквизиты исполнителя указываются при заключении договора.
+    </div>
+  </div>
+</footer>
+
+<div class="sticky">
+  <a class="btn btn-line" href="tel:+79247076661">Позвонить</a>
+  <a class="btn btn-gold" href="https://vk.me/id1028741513" target="_blank" rel="noopener">Записаться</a>
+</div>
+
+<script>
+function toggleMenu(){document.getElementById('menu').classList.toggle('open')}
+function closeMenu(){document.getElementById('menu').classList.remove('open')}
+document.querySelectorAll('.tab').forEach(function(t){
+  t.onclick=function(){
+    document.querySelectorAll('.tab').forEach(function(x){x.classList.remove('on')});
+    document.querySelectorAll('.plist').forEach(function(x){x.classList.remove('on')});
+    t.classList.add('on');
+    var el=document.getElementById(t.dataset.t);
+    el.classList.add('on');el.classList.add('in');
+  };
+});
+var io=new IntersectionObserver(function(es){
+  es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})
+},{threshold:.12});
+document.querySelectorAll('.rev').forEach(function(el){io.observe(el)});
+</script>
+</body>
+</html>
