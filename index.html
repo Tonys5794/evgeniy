@@ -31,8 +31,6 @@ a{color:inherit}
 h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.12;letter-spacing:-.01em}
 h1 em,h2 em{font-style:italic;color:var(--gold)}
 section{padding:clamp(56px,6.2vw,112px) 0}
-.demo{background:#2b4d12;color:#e7eae7;text-align:center;font-size:13px;padding:9px 16px;line-height:1.45;font-weight:300}
-.demo b{color:#fff;font-weight:600}
 
 header{position:sticky;top:0;z-index:80;background:rgba(248,250,242,.92);
        backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
@@ -243,8 +241,6 @@ footer a{color:#fff}
 </head>
 <body>
 
-<!-- ПРИ СДАЧЕ: удалить эту строку -->
-<div class="demo">Черновик сайта &middot; цены взяты из прайса ВКонтакте. <b>Проверить контакты и отзывы перед публикацией.</b></div>
 
 <header>
   <div class="wrap">
@@ -287,8 +283,6 @@ footer a{color:#fff}
     <div class="hero-photo">
       <div class="badge"><i></i>Запись открыта</div>
       <div class="frame">
-        <!-- Положи файл hero.jpg — подхватится сам.
-             Нет файла — останется аккуратная заглушка, ничего не сломается. -->
         <img src="hero.jpg" alt="Евгений, массажист"
              onerror="this.style.display='none';this.nextElementSibling.style.display='grid'">
         <div class="slot" style="display:none"><b>Евгений</b>массаж · остеопатия · мануальная терапия</div>
@@ -387,7 +381,7 @@ footer a{color:#fff}
       <div><b>16</b><span>часов миофасциальный</span></div>
       <div><b>16</b><span>часов расслабляющий</span></div>
     </div>
-    <p class="upd">Документы выданы на имя Лобова Евгения Игоревича. Оригиналы можно посмотреть в кабинете.</p>
+    <p class="upd">Документы выданы на имя Лобова Евгения Игоревича. Оригиналы — в кабинете.</p>
   </div>
 </section>
 
@@ -437,8 +431,7 @@ footer a{color:#fff}
     </div>
 
     <div class="plist rev" id="viezd">
-      <div class="row"><span class="nm">Выезд на дом по Иркутску<small>Привожу свой стол и материалы. Цену уточняйте — зависит от района и объёма</small></span><span class="pr">по запросу</span></div>
-      <div class="row"><span class="nm">Как заказать<small>Напишите адрес, какой массаж нужен и удобное время — отвечу со стоимостью</small></span><span class="pr">—</span></div>
+      <div class="row"><span class="nm">Выезд на дом по Иркутску<small>Привожу свой массажный стол и материалы. Стоимость зависит от района и объёма работы</small></span><span class="pr">по запросу</span></div>
     </div>
 
     <p class="upd">Цены указаны за сеанс и не являются публичной офертой. Итоговая стоимость
@@ -507,10 +500,10 @@ footer a{color:#fff}
       <p>Салон красоты «Багира», 1 этаж. 5-й Советский переулок, 1а, Ново-Ленино.</p>
     </div>
     <div class="gal">
-      <figure><img src="1.jpg" alt="Кабинет" onerror="this.remove()">фото кабинета<br>1.jpg</figure>
-      <figure><img src="2.jpg" alt="Кабинет" onerror="this.remove()">фото кабинета<br>2.jpg</figure>
-      <figure><img src="3.jpg" alt="Кабинет" onerror="this.remove()">фото кабинета<br>3.jpg</figure>
-      <figure><img src="4.jpg" alt="Кабинет" onerror="this.remove()">фото кабинета<br>4.jpg</figure>
+      <figure><img src="1.jpg" alt="Массажный кабинет, Иркутск" onerror="this.closest('figure').remove()"></figure>
+      <figure><img src="2.jpg" alt="Массажный кабинет, Иркутск" onerror="this.closest('figure').remove()"></figure>
+      <figure><img src="3.jpg" alt="Массажный кабинет, Иркутск" onerror="this.closest('figure').remove()"></figure>
+      <figure><img src="4.jpg" alt="Массажный кабинет, Иркутск" onerror="this.closest('figure').remove()"></figure>
     </div>
   </div>
 </section>
@@ -597,8 +590,7 @@ footer a{color:#fff}
     <div class="legal">
       Информация на сайте носит справочный характер и не является публичной офертой,
       медицинской консультацией или диагнозом. Массаж имеет противопоказания —
-      перед процедурой необходима консультация специалиста. Услуги оказывает физическое лицо;
-      реквизиты исполнителя указываются при заключении договора.
+      перед процедурой необходима консультация специалиста.
     </div>
   </div>
 </footer>
